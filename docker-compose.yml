@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  redis:
+    build:
+      context: .
+      dockerfile: ./dockerfile/redis
+    command: >
+      bash -c "touch /var/log/redis.log && 
+      redis-server /usr/local/etc/redis/redis.conf"
+    ports:
+      - 6379:6379
+    volumes:
+      - "./data/redis:/data"
+      - "./conf:/usr/local/etc/redis"
+      - "./log:/var/log"

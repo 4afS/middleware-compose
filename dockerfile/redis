@@ -1,0 +1,3 @@
+FROM redis:latest
+
+RUN touch /var/log/redis.log
