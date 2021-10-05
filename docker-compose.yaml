@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 services:
   redis:
     build:
@@ -10,6 +10,6 @@ services:
     ports:
       - 6379:6379
     volumes:
-      - "./data/redis:/data"
-      - "./conf:/usr/local/etc/redis"
-      - "./log:/var/log"
+      - ./data/redis:/data
+      - ./conf:/usr/local/etc/redis
+      - ./log:/var/log
