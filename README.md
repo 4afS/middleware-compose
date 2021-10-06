@@ -6,15 +6,22 @@
 
 ## Supported
 
+### RDB
 - mysql
 - mariadb
 - postgres
-- mongo
-- mongo-express
+
+### KVS
 - memcached
 - redis
+- dynamod
 - cassandra
-- dynamodb
+
+### Document
+- mongo
+
+### Graph
+- neo4j
 
 ## Usage
 
