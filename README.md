@@ -6,10 +6,10 @@
 
 ## Usage
 
-### start all services
+### build and start all services
 
 ```sh
-docker compose up -d
+make up
 ```
 
 ### start specific services
@@ -20,7 +20,17 @@ ex. redis
 docker compose up -d redis
 ```
 
-### remove all persisted data in data/
+### start and stop already built services
+
+```sh
+make start
+```
+
+```sh
+make stop
+```
+
+### remove all containers and persisted data in data/
 
 ```sh
 make clean
