@@ -21,6 +21,9 @@ prune:
 	docker image prune
 
 .PHONY: clean
+rm:
+	docker compose rm -vsf
+
+.PHONY: clean
 clean:
 	@-sudo /bin/rm -rf data
-	docker compose rm -vsf
