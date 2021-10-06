@@ -5,11 +5,30 @@ services:
       context: .
       dockerfile: ./dockerfile/redis
     command: >
-      bash -c "touch /var/log/redis.log && 
-      redis-server /usr/local/etc/redis/redis.conf"
+      redis-server /usr/local/etc/redis/redis.conf
     ports:
       - 6379:6379
     volumes:
       - ./data/redis:/data
-      - ./conf:/usr/local/etc/redis
-      - ./log:/var/log
+      - ./conf/redis.conf:/usr/local/etc/redis/redis.conf
+
+  mysql:
+    build:
+      context: .
+      dockerfile: ./dockerfile/mysql
+    command: >
+        --user=root
+        --character-set-server=utf8mb4
+        --collation-server=utf8mb4_unicode_ci
+        --general_log=ON
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: general
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      TZ: UTC
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./init/mysql:/docker-entrypoint-initdb.d
