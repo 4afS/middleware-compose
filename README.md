@@ -4,6 +4,18 @@
 - docker-compose
 - make
 
+## Supported
+
+- mysql
+- mariadb
+- postgres
+- mongo
+- mongo-express
+- memcached
+- redis
+- cassandra
+- dynamodb
+
 ## Usage
 
 ### build and start all services
