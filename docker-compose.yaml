@@ -79,3 +79,32 @@ services:
     restart: always
     ports:
       - 11211:11211
+  
+  mongo:
+    build:
+      context: .
+      dockerfile: ./dockerfile/mongo
+    restart: always
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - 27017:27017
+    volumes:
+      - ./conf/mongo.conf:/etc/mongo/mongod.conf
+      - ./data/mongo:/data/db
+ 
+  mongo-express:
+    build:
+      context: .
+      dockerfile: ./dockerfile/mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root
+    depends_on:
+      - mongo
