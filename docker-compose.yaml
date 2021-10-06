@@ -50,3 +50,24 @@ services:
     volumes:
       - ./data/postgres:/var/lib/postgresql/data/pgdata
       - ./init/postgres:/docker-entrypoint-initdb.d
+    
+  mariadb:
+    build:
+      context: .
+      dockerfile: ./dockerfile/mariadb
+    restart: always
+    command: >
+        --character-set-server=utf8mb4
+        --collation-server=utf8mb4_unicode_ci
+        --general_log=ON
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: general
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      TZ: UTC
+    ports:
+        - "3366:3306"
+    volumes:
+      - ./data/mariadb:/var/lib/mysql
+      - ./init/mariadb:/docker-entrypoint-initdb.d
