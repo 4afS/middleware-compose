@@ -71,3 +71,11 @@ services:
     volumes:
       - ./data/mariadb:/var/lib/mysql
       - ./init/mariadb:/docker-entrypoint-initdb.d
+  
+  memcached:
+    build:
+      context: .
+      dockerfile: ./dockerfile/memcached
+    restart: always
+    ports:
+      - 11211:11211
