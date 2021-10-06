@@ -131,7 +131,8 @@ services:
       context: .
       dockerfile: ./dockerfile/cassandra
     command: >
-      /bin/bash -c "echo loading cassandra keyspace &&
+      /bin/bash -c "sleep60 && 
+      echo loading cassandra keyspace &&
       cqlsh cassandra -f /files/schema.cql"
     depends_on:
       - cassandra
