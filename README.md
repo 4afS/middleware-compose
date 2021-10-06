@@ -14,7 +14,7 @@
 ### KVS
 - memcached
 - redis
-- dynamod
+- dynamodb
 - cassandra
 
 ### Document
