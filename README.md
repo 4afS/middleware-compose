@@ -20,7 +20,7 @@ ex. redis
 docker compose up -d redis
 ```
 
-### remove all persisted data in log/ and data/
+### remove all persisted data in data/
 
 ```sh
 make clean
