@@ -150,3 +150,16 @@ services:
       - 8000:8000
     volumes:
       - ./data/dynamodb:/data
+  
+  neo4j:
+    build:
+      context: .
+      dockerfile: ./dockerfile/neo4j
+    restart: always
+    environment:
+      - NEO4J_dbms_memory_pagecache_size=2G
+    ports:
+      - 7474:7474
+      - 7687:7687
+    volumes:
+      - ./data/neo4j:/data
